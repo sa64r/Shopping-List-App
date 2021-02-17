@@ -1,0 +1,21 @@
+<% layout('layouts/authorised-boilerplate') %>
+    <h1>Edit <%= item.title %>
+    </h1>
+    <form action="/items/<%= item._id %>?_method=PUT" class="form-group" method="POST">
+        <div class="my-2">
+            <label class="form-label" for="title">Name</label>
+            <input type="text" class="form-control" placeholder="Item Name" name="item[title]" id="title"
+                value="<%= item.title %>">
+        </div>
+        <div class="my-2">
+            <label class="form-label" for="quantity">Quantity</label>
+            <input type="number" class="form-control" placeholder="Quantity" name="item[quantity]" id="quantity"
+                value="<%= item.quantity %>">
+        </div>
+        <div class="my-2">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" name="item[description]" id="description"><%= item.description %>
+            </textarea>
+        </div>
+        <button class="btn btn-success">Update</button>
+    </form>

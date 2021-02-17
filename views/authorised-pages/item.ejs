@@ -1,4 +1,4 @@
-<% layout('layouts/boilerplate') %>
+<% layout('layouts/authorised-boilerplate') %>
 
     <div class="card">
         <h5 class="card-header">
@@ -12,4 +12,5 @@
                 <%= item.description %>
             </p>
             <a href="/items" class="btn btn-primary">Back to List</a>
+            <a href="/items/<%=item._id%>/edit" class="btn btn-success">Edit</a>
         </div>

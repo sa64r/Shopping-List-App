@@ -1,0 +1,19 @@
+<% layout('layouts/authorised-boilerplate') %>
+    <h1>Add New Item</h1>
+    <form action="/items" class="form-group" method="POST">
+        <div class="my-2">
+            <form action="/items" class="form-group" method="POST">
+                <label class="form-label" for="title">Name</label>
+                <input type="text" class="form-control" placeholder="Item Name" name="item[title]" id="title">
+        </div>
+        <div class="my-2">
+            <label class="form-label" for="quantity">Quantity</label>
+            <input type="number" class="form-control" placeholder="Quantity" name="item[quantity]" id="quantity">
+        </div>
+        <div class="my-2">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" name="item[description]" id="description"></textarea>
+        </div>
+
+        <button class="btn btn-primary">Add to List</button>
+    </form>
