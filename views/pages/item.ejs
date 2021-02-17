@@ -1,3 +1,15 @@
 <% layout('layouts/boilerplate') %>
 
-    <h1>Item Name</h1>
+    <div class="card">
+        <h5 class="card-header">
+            <%= item.title %>
+        </h5>
+        <div class="card-body">
+            <h3 class="card-title">
+                <%= item.quantity %>
+            </h3>
+            <p class="card-text">
+                <%= item.description %>
+            </p>
+            <a href="/items" class="btn btn-primary">Back to List</a>
+        </div>

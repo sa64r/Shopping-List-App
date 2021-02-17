@@ -15,11 +15,19 @@ db.once('open', () => {
 
 const seedDB = async () => {
     await Item.deleteMany({});
-    const item = new Item({
+    const item1 = new Item({
         title: "Apple",
-        quantity: 4
+        quantity: 4,
+        description: "Golden delicious apple, finest in all the land."
     })
-    await item.save();
+    await item1.save();
+
+    const item2 = new Item({
+        title: "Mangos",
+        quantity: 100,
+        description: "The juciest mango from the hills of the Morrocan countryside"
+    })
+    await item2.save();
 }
 
 seedDB().then(() => {

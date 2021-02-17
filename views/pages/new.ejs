@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate') %>
+    <h1>Add New Item</h1>
+    <form action="/items" class="form-group" method="POST">
+        <input type="text" class="form-control my-2" placeholder="Item Name" name="item[title]" id="title">
+        <input type="number" class="form-control my-2" placeholder="Quantity" name="item[quantity]" id="quantity">
+        <div class="my-2">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" name="item[description]" id="description"></textarea>
+        </div>
+
+        <button class="btn btn-primary">Add to List</button>
+    </form>

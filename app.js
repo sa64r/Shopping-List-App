@@ -9,6 +9,7 @@ const path = require('path');
 const { ppid } = require("process");
 const ejsMate = require('ejs-mate')
 const mongoose = require('mongoose');
+const Item = require('./models/item');
 
 
 
@@ -30,25 +31,34 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views')) //to ensure ejs views is found from being run anywhere out of the folder of index.js
+app.use(express.urlencoded({ extended: true }))
 
 
 app.get('/', (req, res) => {
     res.render('pages/home')
 });
 
-app.get('/list', (req, res) => {
-    res.render('pages/list')
+app.get('/items', async (req, res) => {
+    const items = await Item.find({});
+    res.render('pages/list', { items })
 });
 
-app.get('/add-item', (req, res) => {
-    res.render('pages/add-item')
+app.get('/items/new', (req, res) => {
+    res.render('pages/new')
 });
 
-app.get('/item/:id', (req, res) => {
-    res.render('pages/item')
+app.post('/items', async (req, res) => {
+    const item = new Item(req.body.item);
+    await item.save();
+    res.redirect(`/items/${item._id}`)
 });
 
-app.get('/item/:id/edit', (req, res) => {
+app.get('/items/:id', async (req, res) => {
+    const item = await Item.findById(req.params.id)
+    res.render('pages/item', { item })
+});
+
+app.get('/items/:id/edit', (req, res) => {
     res.send("Edit Details About Item")
 });
 

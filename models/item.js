@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
     title: String,
-    quantity: Number
+    quantity: Number,
+    description: String
 });
 
 module.exports = mongoose.model('Item', ItemSchema)
